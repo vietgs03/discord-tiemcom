@@ -1,0 +1,2 @@
+# discord-tiemcom
+Tiệm comm
