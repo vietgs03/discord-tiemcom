@@ -37,7 +37,7 @@ const NavigationItem = ({
                             )
                     }>
                         <img
-                            fill
+                            
                             src={imageUrl}
                             alt='Channel'
                             className='h-[48px]'
