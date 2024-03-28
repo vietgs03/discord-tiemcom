@@ -36,11 +36,11 @@ const NavigationItem = ({
                             params?.serverId === id ? "bg-primary/10 text-primary rounded-[16px] " : "h-[40px]"
                             )
                     }>
-                        <img
+                        <Image
                             
                             src={imageUrl}
                             alt='Channel'
-                            className='h-[48px]'
+                            className='h-[48px] w-[48px] object-cover'
                         />
                     </div>
                 </div>

@@ -141,7 +141,7 @@ export function Dropzone({
         </div>
         {image && (
           <div className="space-y-8 px-6">
-                <img src={URL.createObjectURL(image)} alt="Preview" />
+                <Image src={URL.createObjectURL(image)} alt="Preview" />
             <Button variant="primary"  onClick={handleUpload}>Upload</Button>
           </div>
          )}
