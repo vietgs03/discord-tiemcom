@@ -92,7 +92,7 @@ export function Dropzone({
   // Function handle upload image
   const handleUpload = async () => {
     const data = new FormData();
-  
+   {/* @ts-expect-error Server Component */}
     data.append('file', image);
   
     const response = await fetch('/api/upload', {
