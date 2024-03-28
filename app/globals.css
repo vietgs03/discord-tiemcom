@@ -80,3 +80,8 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+/* styles.css */
+.rounded-full-img {
+  @apply rounded-full;
+}

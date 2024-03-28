@@ -17,10 +17,10 @@ const SetupPage = async() => {
     })
 
     if(sever){
-        return redirect(`/severs/${sever.id}`)
+        return redirect(`/servers/${sever.id}`)
     }
 
-     return (<InitialModal />);
+    return (<InitialModal />);
 }
  
 export default SetupPage;

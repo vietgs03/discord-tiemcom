@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: ['storage.cloud.google.com'],
+        loader: 'default',
+    }
+};
 
 export default nextConfig;

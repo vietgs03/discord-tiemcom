@@ -23,6 +23,9 @@ import {
 } from "@/components/ui/form"
 import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
+import { FileUpload } from "@/components/file-upload";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     name: z.string().min(1,{
@@ -36,6 +39,7 @@ const formSchema = z.object({
 
 export const InitialModal = () => {
     const [isMounted,setIsMounted] = useState(false)
+    const router = useRouter();
 
     useEffect(()=> {
         setIsMounted(true)
@@ -52,7 +56,15 @@ export const InitialModal = () => {
 
     const isLoading = form.formState.isSubmitting
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values)
+        try{
+            await axios.post("/api/severs",values); 
+            form.reset();
+            router.refresh();
+            window.location.reload();
+        }catch(err){
+            console.log(err)
+        }
+
     }
 
     if(!isMounted){
@@ -74,7 +86,21 @@ export const InitialModal = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                TODO: Image Upload
+                                <FormField 
+                                    control={form.control}
+                                    name = "imageUrl"
+                                    render={({field}) =>(
+                                        <FormItem>
+                                            <FormControl>
+                                                <FileUpload 
+                                                    endpoint = "severImage"
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
                             <FormField 
                                 control={form.control}
@@ -100,7 +126,7 @@ export const InitialModal = () => {
                         </div>
                         <DialogFooter className="bg-gray-100 px-6 py-4">
                             <Button variant="primary" disabled={isLoading}>
-                                Create
+                                Tạo
                             </Button>
                         </DialogFooter>
                     </form>
